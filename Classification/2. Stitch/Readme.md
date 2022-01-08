@@ -1,10 +1,11 @@
 Stitch
 
-SIFT & FLANN flight.mp4 result
+SIFT & FLANN result
+![image](https://user-images.githubusercontent.com/86349365/148646660-9e5cf929-7f61-44b6-a4d0-ae05c40195a7.png)
+
+
+
 ![kang](https://user-images.githubusercontent.com/86349365/148645882-2e60584a-99f3-4be9-aa9e-78b8fd89aa29.jpg)
-
-
-SIFT & FLANN winter.mp4 result
 ![kang](https://user-images.githubusercontent.com/86349365/148645849-55cb965c-4016-48eb-9f06-8bdf0b1545d6.jpg)
 
 Autostitch result
