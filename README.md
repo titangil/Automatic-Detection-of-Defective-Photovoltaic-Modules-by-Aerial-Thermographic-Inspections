@@ -11,7 +11,7 @@
 
 2)	Equipment
 
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;![image](https://user-images.githubusercontent.com/86349365/148644938-7b7d1b03-9abb-40e1-9fed-3e07e98f7866.png)
+&emsp;&emsp;&emsp;&emsp;&emsp;![image](https://user-images.githubusercontent.com/86349365/148644938-7b7d1b03-9abb-40e1-9fed-3e07e98f7866.png)
 
 3)	Methodology
 
@@ -24,7 +24,7 @@ Our process will be divided into two parts, midflight operation, and post-proces
 &emsp;Midflight operation covers guided navigation above the solar array by utilizing image processing.
 We have done a simulated model in ROS environment and Gazebo simulation, written in Python language. For communication, we used MavLink protocol on Ardupilot firmware.
 
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;![image](https://user-images.githubusercontent.com/86349365/148645011-61da30be-32e2-4373-958f-d6705be6fbcc.png)
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;![image](https://user-images.githubusercontent.com/86349365/148645011-61da30be-32e2-4373-958f-d6705be6fbcc.png)
 
 &emsp;3.2	 Post Processing
 
