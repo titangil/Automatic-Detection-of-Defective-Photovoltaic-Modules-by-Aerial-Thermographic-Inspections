@@ -11,7 +11,7 @@
 
 2)	Equipment
 
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;![image](https://user-images.githubusercontent.com/86349365/148644938-7b7d1b03-9abb-40e1-9fed-3e07e98f7866.png)
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;![image](https://user-images.githubusercontent.com/86349365/148644938-7b7d1b03-9abb-40e1-9fed-3e07e98f7866.png)
 
 3)	Methodology
 
