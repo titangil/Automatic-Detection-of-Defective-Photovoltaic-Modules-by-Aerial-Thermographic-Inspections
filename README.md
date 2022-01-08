@@ -30,5 +30,5 @@ We have done a simulated model in ROS environment and Gazebo simulation, written
 
 &emsp;As the drone aviate, it would capture thermal images along the solar array. We can use image processing and machine learning to segment and classify defect of each panel. 
 
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;![image](https://user-images.githubusercontent.com/86349365/148645092-2e4cac9a-f7a3-46d0-b247-b37248c3f632.png)
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;![image](https://user-images.githubusercontent.com/86349365/148645092-2e4cac9a-f7a3-46d0-b247-b37248c3f632.png)
 
