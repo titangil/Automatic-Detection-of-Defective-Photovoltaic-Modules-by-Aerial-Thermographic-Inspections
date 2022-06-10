@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Oct 13 00:10:52 2021
-
-@author: titan
-"""
-
 import cv2 as cv
 import numpy as np
 import imutils 
