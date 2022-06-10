@@ -1,5 +1,15 @@
 Stitch
 
+Library
+  - cv2
+  - numpy
+  - imutils 
+  - utils
+  - matplotlib
+  - skimage.filters
+  - os
+
+
 SIFT & FLANN result
 ![image](https://user-images.githubusercontent.com/86349365/148646660-9e5cf929-7f61-44b6-a4d0-ae05c40195a7.png)
 
