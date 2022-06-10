@@ -1,5 +1,12 @@
 MASK-R-CNN Segmentation
 
+Library
+  - cv2
+  - numpy
+  - matplotlib
+  - time
+  - os
+
 dataset + trained model: https://drive.google.com/drive/folders/1VXt4cczi5tXwr2bvl4taGofq5mAdKp2S?usp=sharing
 
 ![image](https://user-images.githubusercontent.com/86349365/148645408-fa51615d-c521-4737-9edc-e1d869588094.png)
