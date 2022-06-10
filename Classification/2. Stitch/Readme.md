@@ -23,9 +23,4 @@ Autostitch result
 
 Opencv-stitcher result
 ![07](https://user-images.githubusercontent.com/86349365/148646012-27c0e56f-58cc-49e2-ae29-e48ba26abd63.png)
-![08](https://user-images.githubusercontent.com/86349365/148646015-722dcb49-51c1-42c4-b54b-6ecbaf63e88b.png)
-![09](https://user-images.githubusercontent.com/86349365/148646017-dfb9b118-ea9a-4ac9-b237-29a2d203eaa0.png)
-![10](https://user-images.githubusercontent.com/86349365/148646019-78f48911-9d25-4ea5-87d3-f20536c98fdf.png)
-![11](https://user-images.githubusercontent.com/86349365/148646020-e6af3e88-193c-43a1-a0ac-752f9d6fff9c.png)
-![12](https://user-images.githubusercontent.com/86349365/148646022-74c402f0-4913-4914-b84b-ab75d4f11445.png)
-![13](https://user-images.githubusercontent.com/86349365/148646025-fb39c06d-28d8-431f-abef-e1732bc8214f.png)
+
