@@ -1,5 +1,13 @@
 Use Hough Line transformation to detect lines in the image of the solar array.
 
+Library
+  - cv2
+  - numpy
+  - imutils
+  - matplotlib
+  - math
+
+
 
 Input
 ![image](https://user-images.githubusercontent.com/86349365/160546743-89a24f26-fd17-4b7e-97e8-0b3bde8044a9.png)
