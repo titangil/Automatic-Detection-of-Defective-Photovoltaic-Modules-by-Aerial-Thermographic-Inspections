@@ -1,2 +1,2 @@
 Library
-- OpenCV
+- cv2
