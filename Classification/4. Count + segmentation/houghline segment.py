@@ -14,8 +14,8 @@ import math
 
 
 
-img = cv2.imread("testimg3.png")
-
+img = cv2.imread("thermal.jpg")
+cv2.namedWindow("out", cv2.WINDOW_NORMAL)
 
 gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 rows,cols = gray.shape
@@ -46,8 +46,6 @@ for c in cnt:
         if result == -1:continue
         else:psort.append(p)                                                    #Sort 4 points corner
 
-'''print(screenCnt)        
-print(np.array(psort))'''
         
 
 
@@ -57,13 +55,15 @@ M = cv2.getPerspectiveTransform(np.array(psort), new_pt)
 dst = cv2.warpPerspective(img, M, (cols, rows))
 dst = cv2.cvtColor(dst,cv2.COLOR_BGR2GRAY)
 
-kernel = np.ones((5,5),np.uint8)
+kernel = np.ones((3,3),np.uint8)
 offset = 30
 blur = cv2.GaussianBlur(dst,(5,5),1)
 edges = cv2.Canny(blur,0,100)
 
 zero = np.zeros((rows,cols))
 dst_color = cv2.merge([dst,dst,dst])
+
+
 lines = cv2.HoughLines(edges, 1, np.pi/100,200)
 for line in lines:
     rho,theta = line[0]
@@ -76,8 +76,9 @@ for line in lines:
     x2 = int(x0 - 10000*(-b))
     y2 = int(y0 - 10000*(a))
     cv2.line(zero,(x1,y1),(x2,y2),(255,255,255),3)
+    
+    
 lines = cv2.HoughLines(edges,5,np.pi/1,100)
-
 for line in lines:
     rho,theta = line[0]
     a = np.cos(theta)
@@ -93,6 +94,7 @@ for line in lines:
 
 
 zero = 255-zero
+zero =  cv2.dilate(zero,kernel,iterations = 2)
 zero = np.uint8(zero)
 ret,th1 = cv2.threshold(zero,127,255,cv2.THRESH_BINARY)
 cnst2 = cv2.findContours(th1, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)   
@@ -102,16 +104,17 @@ cnst2 = imutils.grab_contours(cnst2)
 t = 1
 
 print(len(cnst2))
+row = len(cnst2)/2
+col = 2
+new_w = (80)*row
+new_h = (120)*col
+black_canvas = np.zeros((int(new_h),int(new_w)))
+black_canvas = np.uint8(black_canvas)
+black_canvas =  cv2.merge([black_canvas,black_canvas,black_canvas])
+print(black_canvas.shape)
 
-
-for c in cnst2:
-        
-        approx = cv2.approxPolyDP(c,0.01*cv2.arcLength(c,True),True)
-        '''if len(approx) == 4:
-            screenCnt = approx
-            cv2.drawContours(dst, [screenCnt], -1, (0, 255, 0), 2)  '''
-            
-        
+for c in cnst2:     
+        approx = cv2.approxPolyDP(c,0.01*cv2.arcLength(c,True),True)  
         area = cv2.contourArea(c)
         
       
@@ -127,48 +130,55 @@ for c in cnst2:
         
         x,y,w,h=cv2.boundingRect(c)
         points.append((x,y,w,h))
-        #print(points)
-        '''cv2.drawContours(dst_color, [c],-1, (0,255,0), 2)      ### show lines, dots, and numbers  ####
-        cv2.circle(dst_color,(cX,cY),4,(255,0,0),-1)
-        cv2.putText(dst_color,str(t),(cX-20,cY-7),cv2.FONT_HERSHEY_COMPLEX,1,(255,255,255),1 )'''
         points = sorted(points,key=lambda data:(data[0]),reverse = False)
-        #print(dst.shape)
-        #print(cX,cY)
         t+=1
-        '''if t == 72:
-            x, y, width, height = cv2.boundingRect(c)
-            cv2.imshow('test',dst_color[y:y+height, x:x+width])
-            cv2.imwrite('D:/Works/Project/Code/Houghline/pic/test.jpg', dst_color[y:y+height, x:x+width])'''
-       
+      
 
 point1 = []
 point2 = []
 for c in points:
-    #print(c[0],c[1])
-    #print(c[1])
-    if c[1] > dst.shape[0]/2:
+
+    if c[1] >= dst.shape[0]/2-5:
         point2.append((c[0],c[1],c[2],c[3]))
     else:
         point1.append((c[0],c[1],c[2],c[3]))
-t = 0      
+t = 0    
+row1 = 0
+row2 = 0  
+print(point1)
 for c in point1:
-    '''cv2.circle(dst_color,(c[0],c[1]),4,(255,0,0),-1)
-    cv2.putText(dst_color,str(t),(c[0],c[1]+20),cv2.FONT_HERSHEY_COMPLEX,1,(255,255,255),1 )
-    cv2.rectangle(dst_color, (c[0],c[1]),(c[0]+c[2],c[1]+c[3]), (255,0,255), 1)'''
+    cv2.circle(dst_color,(c[0],c[1]),4,(255,0,0),-1)
+    cv2.putText(dst_color,str(t),(c[0],c[1]+20),cv2.FONT_HERSHEY_COMPLEX,1,(255,0,0),1 )
+    cv2.rectangle(dst_color, (c[0],c[1]),(c[0]+c[2],c[1]+c[3]), (255,0,255), 2)
+    final1 = dst_color[ c[1]:c[1]+c[3],  c[0]:c[0]+c[2] ]
+    final1 =  cv2.resize(final1, (80, 120))
     
-    if t < 10:
-        cv2.imwrite('D:/Works/Project/Code/Houghline/pic/Without numbers/(0,'+str(t)+').jpg', dst_color[ c[1]:c[1]+c[3],  c[0]:c[0]+c[2] ] )
+    '''if t < 10:
+        #print("write")
+        cv2.imwrite('D:/Works/Project/Code/Houghline/pic/Without numbers/(00,0'+str(t)+').jpg', final1 )
     else:
-        cv2.imwrite('D:/Works/Project/Code/Houghline/pic/Without numbers/(0,'+str(t)+').jpg', dst_color[ c[1]:c[1]+c[3],  c[0]:c[0]+c[2] ] )
+        #print("write2")
+        cv2.imwrite('D:/Works/Project/Code/Houghline/pic/Without numbers/(00,'+str(t)+').jpg', final1 )'''
+        
+    black_canvas[0:0+final1.shape[0], 80*(row1):80*(row1)+final1.shape[1]] = final1
     t+=1
+    row1 +=1
 
 for c in point2:
-    '''cv2.circle(dst_color,(c[0],c[1]),4,(255,0,0),-1)
-    cv2.putText(dst_color,str(t),(c[0],c[1]+20),cv2.FONT_HERSHEY_COMPLEX,1,(255,255,255),1 )
-    cv2.rectangle(dst_color, (c[0],c[1]),(c[0]+c[2],c[1]+c[3]), (255,0,255), 1)'''
-    cv2.imwrite('D:/Works/Project/Code/Houghline/pic/Without numbers/(1,'+str(int((t)-len(cnst2)/2))+').jpg', dst_color[ c[1]:c[1]+c[3],  c[0]:c[0]+c[2] ] )
+    cv2.circle(dst_color,(c[0],c[1]),4,(255,0,0),-1)
+    cv2.putText(dst_color,str(t),(c[0],c[1]+20),cv2.FONT_HERSHEY_COMPLEX,1,(255,0,0),1 )
+    cv2.rectangle(dst_color, (c[0],c[1]),(c[0]+c[2],c[1]+c[3]), (255,0,255), 2)
+    final2 = dst_color[ c[1]:c[1]+c[3],  c[0]:c[0]+c[2] ]
+    final2 =  cv2.resize(final2, (80, 120))
+    '''if row2 < 10:
+        cv2.imwrite('D:/Works/Project/Code/Houghline/pic/Without numbers/(01,0'+str(row2)+').jpg', final2 )
+    else:
+        cv2.imwrite('D:/Works/Project/Code/Houghline/pic/Without numbers/(01,'+str(row2)+').jpg', final2 )'''
+    #cv2.imwrite('D:/Works/Project/Code/Houghline/pic/With numbers/(01,'+str(row2+1)+').jpg', final2 )  #str(int((t)-len(cnst2)/2))
+    
+    
+    black_canvas[120:120+final2.shape[0], 80*(row2):80*(row2)+final2.shape[1]] = final2
+    row2 +=1
+    #cv2.imshow('canvas',final2)
     t+=1
-#print(point2)
-cv2.imshow('out',dst_color)
 
-#cv2.imwrite('persp.jpg',dst)
